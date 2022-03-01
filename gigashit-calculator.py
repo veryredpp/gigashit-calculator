@@ -109,13 +109,10 @@ def clicked():
    tibishits = shits / (2**40)
    pibishits = shits / (2**50)
    #Results
-   ogshits = shits
-   shits = round(shits)
-   shits = "{:,}".format(shits)
-   shitsresult.configure(text= shits + " S (shits)")
+   shitsresult.configure(text= "{:,}".format(round(shits)) + " S (shits)")
    #Metrics based on 10^n
 
-   if ogshits > 1000:
+   if shits > 1000:
       metric1label.configure(text="Metric based on 10^n")
       if kiloshits > 1000:
          if megashits > 1000:
@@ -131,6 +128,7 @@ def clicked():
             metric1results.configure(text= str(round(megashits,2))+" MS (Megashits)")
       else:
          metric1results.configure(text= str(round(kiloshits,2))+" KS (Kiloshits)")
+   #Metrics based on 2^n
    
 
 

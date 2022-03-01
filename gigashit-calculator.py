@@ -150,12 +150,7 @@ def clicked():
             metric2results.configure(text= str(round(mebishits,2))+" MiS (Mebishit/s)")
       else:
          metric2results.configure(text= str(round(kibishits,2))+" KiS (Kibishit/s)")
-   
-
-
-
-
-  
+     
 btn = Button(text="Click here to calculate your shits™",command=clicked).grid(column=1, row=30)
 
 window.geometry("650x700")

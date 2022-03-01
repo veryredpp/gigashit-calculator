@@ -78,6 +78,11 @@ metric1label = Label(text="")
 metric1label.grid(column=2,row=3)
 metric1results = Label(text="")
 metric1results.grid(column=2,row=4)
+Label(text="").grid(column=2,row=5)
+metric2label = Label(text="")
+metric2label.grid(column=2,row=6)
+metric2results = Label(text="")
+metric2results.grid(column=2,row=7)
 def clicked():
    global singlecoreentry
    #CPU
@@ -104,10 +109,10 @@ def clicked():
    petashits = shits / (10**15)
    #Metrics based on 2^n
    kibishits = shits / (2**10)
-   mibishits = shits / (2**20)
+   mebishits = shits / (2**20)
    gibishits = shits / (2**30)
-   tibishits = shits / (2**40)
-   pibishits = shits / (2**50)
+   tebishits = shits / (2**40)
+   pebishits = shits / (2**50)
    #Results
    shitsresult.configure(text= "{:,}".format(round(shits)) + " S (shits)")
    #Metrics based on 10^n
@@ -118,23 +123,34 @@ def clicked():
          if megashits > 1000:
             if gigashits > 1000:
                if terashits > 1000:
-                  metric1results.configure(text= str(round(petashits,2))+" PS (Petashits)")
+                  metric1results.configure(text= str(round(petashits,2))+" PS (Petashit/s)")
                else:
-                  metric1results.configure(text= str(round(terashits,2))+" TS (Terashits)")
+                  metric1results.configure(text= str(round(terashits,2))+" TS (Terashit/s)")
             
             else:
-               metric1results.configure(text= str(round(gigashits,2))+" GS (Gigashits)")
+               metric1results.configure(text= str(round(gigashits,2))+" GS (Gigashit/s)")
          else:
-            metric1results.configure(text= str(round(megashits,2))+" MS (Megashits)")
+            metric1results.configure(text= str(round(megashits,2))+" MS (Megashit/s)")
       else:
-         metric1results.configure(text= str(round(kiloshits,2))+" KS (Kiloshits)")
+         metric1results.configure(text= str(round(kiloshits,2))+" KS (Kiloshit/s)")
    #Metrics based on 2^n
-   
-
-
-
-
-  
+   if shits > 1024:
+      metric2label.configure(text="Metric based on 2^n:")
+      if kiloshits > 1024:
+         if megashits > 1024:
+            if gigashits > 1024:
+               if terashits > 1024:
+                  metric2results.configure(text= str(round(pebishits,2))+" PiS (Pebishit/s)")
+               else:
+                  metric2results.configure(text= str(round(tebishits,2))+" TiS (Tebishit/s)")
+            
+            else:
+               metric2results.configure(text= str(round(gibishits,2))+" GiS (Gibishit/s)")
+         else:
+            metric2results.configure(text= str(round(mebishits,2))+" MiS (Mebishit/s)")
+      else:
+         metric2results.configure(text= str(round(kibishits,2))+" KiS (Kibishit/s)")
+     
 btn = Button(text="Click here to calculate your shits™",command=clicked).grid(column=1, row=30)
 
 window.geometry("650x700")

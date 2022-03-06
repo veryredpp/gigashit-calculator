@@ -1,9 +1,22 @@
+from urllib import request
 from tkinter import *
 import webbrowser
+import urllib
+import base64
 window=Tk()
 def browser(url):
    webbrowser.open_new_tab(url)
-window.title("Shit/Gigashit Calculator")  
+window.title("Shit/Gigashit Calculator")
+
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"
+url = "https://redstoner.me/downloads/gigashitfiles/gigashit-export.png"
+headers = {"User-Agent" : user_agent,} 
+request = urllib.request.Request(url,None,headers)
+response = urllib.request.urlopen(request)
+b64pic = base64.encodebytes(response.read())
+response.close()
+image = PhotoImage(data=b64pic)
+window.iconphoto(True, image)
 
 Label(text="CPU").grid(column=1,row=1)
 
@@ -27,7 +40,6 @@ clockspeedentry.grid(column=1,row=8)
 Label(text="").grid(column=1,row=9)
 
 Label(text="RAM").grid(column=1,row=10)
-
 
 ramamounttext = Label(text="Memory Amount (RAM) (GB)").grid(column=1,row=11)
 ramamountentry = Entry()

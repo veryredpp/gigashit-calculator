@@ -17,11 +17,11 @@ jobs:
       - name: PyInstaller Windows
         uses: JackMcKew/pyinstaller-action-windows@v0.1.2
         with:
-          path: src
+          path: app
         
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
           name: gigashit-calculator.py
-          path: src
+          path: app
 

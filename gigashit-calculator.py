@@ -3,20 +3,26 @@ from tkinter import *
 import webbrowser
 import urllib
 import base64
+import os
 window=Tk()
 def browser(url):
    webbrowser.open_new_tab(url)
 window.title("Shit/Gigashit Calculator")
 
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"
-url = "https://redstoner.me/downloads/gigashitfiles/gigashit-export.png"
+url = "https://redstoner.me/downloads/gigashitfiles/gigashit.ico"
 headers = {"User-Agent" : user_agent,} 
 request = urllib.request.Request(url,None,headers)
 response = urllib.request.urlopen(request)
 b64pic = base64.encodebytes(response.read())
 response.close()
-image = PhotoImage(data=b64pic)
-window.iconphoto(True, image)
+icondata= base64.b64decode(b64pic)
+tempFile= "icon.ico"
+iconfile= open(tempFile,"wb")
+iconfile.write(icondata)
+iconfile.close()
+window.wm_iconbitmap(tempFile)
+os.remove(tempFile)
 
 Label(text="CPU").grid(column=1,row=1)
 

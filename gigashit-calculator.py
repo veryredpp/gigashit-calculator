@@ -9,20 +9,37 @@ def browser(url):
    webbrowser.open_new_tab(url)
 window.title("Shit/Gigashit Calculator")
 
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"
-url = "https://redstoner.me/downloads/gigashitfiles/gigashit.ico"
-headers = {"User-Agent" : user_agent,} 
-request = urllib.request.Request(url,None,headers)
-response = urllib.request.urlopen(request)
-b64pic = base64.encodebytes(response.read())
-response.close()
-icondata= base64.b64decode(b64pic)
-tempFile= "icon.ico"
-iconfile= open(tempFile,"wb")
-iconfile.write(icondata)
-iconfile.close()
-window.wm_iconbitmap(tempFile)
-os.remove(tempFile)
+if os.name == "nt":
+   user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"
+   url = "https://redstoner.me/downloads/gigashitfiles/gigashit.ico"
+   headers = {"User-Agent" : user_agent,} 
+   request = urllib.request.Request(url,None,headers)
+   response = urllib.request.urlopen(request)
+   b64pic = base64.encodebytes(response.read())
+   response.close()
+   icondata= base64.b64decode(b64pic)
+   tempFile= "icon.ico"
+   iconfile= open(tempFile,"wb")
+   iconfile.write(icondata)
+   iconfile.close()
+   window.wm_iconbitmap(tempFile)
+   os.remove(tempFile)
+else:
+   user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"
+   url = "https://redstoner.me/downloads/gigashitfiles/gigashit.png"
+   headers = {"User-Agent" : user_agent,} 
+   request = urllib.request.Request(url,None,headers)
+   response = urllib.request.urlopen(request)
+   b64pic = base64.encodebytes(response.read())
+   response.close()
+   icondata= base64.b64decode(b64pic)
+   tempFile= "icon.png"
+   iconfile= open(tempFile,"wb")
+   iconfile.write(icondata)
+   iconfile.close()
+   photo_image = PhotoImage(file=tempFile)
+   window.iconphoto(True, photo_image)
+   os.remove(tempFile)
 
 Label(text="CPU").grid(column=1,row=1)
 
@@ -168,8 +185,10 @@ def clicked():
             metric2results.configure(text= str(round(mebishits,2))+" MiS (Mebishit/s)")
       else:
          metric2results.configure(text= str(round(kibishits,2))+" KiS (Kibishit/s)")
+   window.geometry("650x700")
+
      
 btn = Button(text="Click here to calculate your shits™",command=clicked).grid(column=1, row=30)
 
-window.geometry("650x700")
+window.geometry("450x700")
 window.mainloop()

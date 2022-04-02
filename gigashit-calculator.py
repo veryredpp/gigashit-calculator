@@ -190,5 +190,5 @@ def clicked():
      
 btn = Button(text="Click here to calculate your shits™",command=clicked).grid(column=1, row=30)
 
-window.geometry("450x700")
+window.geometry("355x700")
 window.mainloop()

@@ -11,7 +11,7 @@ window.title("Shit/Gigashit Calculator")
 
 if os.name == "nt":
    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"
-   url = "https://redstoner.me/downloads/gigashitfiles/gigashit.ico"
+   url = "https://printermc.com/downloads/gigashitfiles/gigashit.ico"
    headers = {"User-Agent" : user_agent,} 
    request = urllib.request.Request(url,None,headers)
    response = urllib.request.urlopen(request)
@@ -26,7 +26,7 @@ if os.name == "nt":
    os.remove(tempFile)
 else:
    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"
-   url = "https://redstoner.me/downloads/gigashitfiles/gigashit.png"
+   url = "https://printermc.com/downloads/gigashitfiles/gigashit.png"
    headers = {"User-Agent" : user_agent,} 
    request = urllib.request.Request(url,None,headers)
    response = urllib.request.urlopen(request)
